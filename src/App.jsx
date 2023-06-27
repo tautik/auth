@@ -1,11 +1,37 @@
+import { Outlet, RouterProvider, createBrowserRouter } from "react-router-dom";
 import { Homepage } from "./pages";
+// import SidebarCmp from "./components/sidebar/SidebarCmp";
+// import { Navbar } from "./components/navbar";
 
-function App() {
+const App = () => {
   return (
-    <>
-      <h1 className="text-3xl font-bold underline ">Hello world!</h1>
-    </>
+    // <Provider store={store}>
+    <RouterProvider router={routes} />
+    // </Provider>
   );
-}
+};
+
+const routes = createBrowserRouter([
+  {
+    path: "/",
+    element: (
+      <>
+        <div className="font-[Nunito] flex">
+          {/* <SidebarCmp /> */}
+          <div className="w-full">
+            {/* <Navbar /> */}
+            <Outlet />
+          </div>
+        </div>
+      </>
+    ),
+    children: [
+      {
+        path: "/",
+        element: <Homepage />,
+      },
+    ],
+  },
+]);
 
 export default App;

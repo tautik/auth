@@ -3,7 +3,7 @@ import { useField } from "formik";
 
 const CustomInput = ({ label, ...props }) => {
   const [field, meta] = useField(props);
-
+  console.log(meta);
   return (
     <div className="flex justify-between bg-red-200 w-[90%] mx-auto  py-1">
       <label>{label}</label>

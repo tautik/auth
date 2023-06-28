@@ -1,9 +1,11 @@
-import { Field, Form, Formik } from "formik";
-import React from "react";
+import { Form, Formik } from "formik";
 import CustomInput from "./CustomInput";
 import CustomSelect from "./CustomSelect";
 import axios from "axios";
+
 import { baseUrl } from "../config/serverConfig";
+
+import Swal from "sweetalert2";
 
 const SignUpForm = () => {
   return (
@@ -12,17 +14,27 @@ const SignUpForm = () => {
         initialValues={{ email: "", password: "", position: "", name: "" }}
         onSubmit={async (values, actions) => {
           actions.resetForm();
-          setTimeout(() => {
-            alert(JSON.stringify(values, null, 2));
-            actions.setSubmitting(false);
-          }, 1000);
+
           try {
             const response = await axios.post(`${baseUrl}/v1/signup`, values);
             if (response.status === 201) {
               console.log(response.data);
+              Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "Succesfully Registered",
+                showConfirmButton: false,
+                timer: 1500,
+              });
             }
           } catch (err) {
-            alert("There is Error");
+            Swal.fire({
+              position: "top-end",
+              icon: "error",
+              title: err,
+              showConfirmButton: false,
+              timer: 1500,
+            });
           }
         }}
       >

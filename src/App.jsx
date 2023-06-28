@@ -1,5 +1,6 @@
 import { Outlet, RouterProvider, createBrowserRouter } from "react-router-dom";
-import { Homepage } from "./pages";
+import { SignUp } from "./pages";
+
 // import SidebarCmp from "./components/sidebar/SidebarCmp";
 // import { Navbar } from "./components/navbar";
 
@@ -18,7 +19,7 @@ const routes = createBrowserRouter([
       <>
         <div className="font-[Nunito] flex">
           {/* <SidebarCmp /> */}
-          <div className="w-full">
+          <div className="w-full h-full bg-green-50">
             {/* <Navbar /> */}
             <Outlet />
           </div>
@@ -28,7 +29,7 @@ const routes = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Homepage />,
+        element: <SignUp />,
       },
     ],
   },

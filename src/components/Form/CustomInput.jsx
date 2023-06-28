@@ -5,11 +5,16 @@ const CustomInput = ({ label, ...props }) => {
   const [field, meta] = useField(props);
   console.log(meta);
   return (
-    <div className="flex justify-between bg-red-200 w-[90%] mx-auto  py-1">
-      <label>{label}</label>
-      <input className="w-[80%] px-1 bg-green-300" {...field} {...props} />
+    <div className="   w-[90%] mx-auto  py-1">
+      <div className="flex justify-between">
+        <label>{label}</label>
+        <input className="w-[80%] px-1 bg-green-300" {...field} {...props} />
+      </div>
+
       {meta.touched && meta.error ? (
-        <div className="error">{meta.error}</div>
+        <div className={`${meta.touched && "text-left text-red-500 text-sm"} `}>
+          {meta.error}
+        </div>
       ) : null}
     </div>
   );

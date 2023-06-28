@@ -6,12 +6,14 @@ import axios from "axios";
 import { baseUrl } from "../config/serverConfig";
 
 import Swal from "sweetalert2";
+import { advancedSchema } from "./schema";
 
 const SignUpForm = () => {
   return (
     <div className="bg-blue-50 w-[24rem] h-[28rem]">
       <Formik
         initialValues={{ email: "", password: "", position: "", name: "" }}
+        validationSchema={advancedSchema}
         onSubmit={async (values, actions) => {
           actions.resetForm();
 
